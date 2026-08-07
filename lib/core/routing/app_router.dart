@@ -8,7 +8,9 @@ class AppRouter {
       case Routes.onboarding:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.login:
-        return MaterialPageRoute(builder: (_) => const Placeholder());
+        return MaterialPageRoute(
+          builder: (_) => const Scaffold(body: Center(child: Text('Login'))),
+        );
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const Placeholder());
       default:
