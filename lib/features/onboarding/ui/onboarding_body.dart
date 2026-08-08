@@ -7,7 +7,6 @@ import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
 class OnboardingBody extends StatelessWidget {
   const OnboardingBody({super.key});
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
