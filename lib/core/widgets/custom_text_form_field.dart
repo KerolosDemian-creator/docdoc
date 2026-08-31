@@ -13,6 +13,8 @@ class CustomTextFormField extends StatelessWidget {
     this.borderColor,
     this.textFormFieldWidth,
     this.borderRadius,
+    this.isObsecured,
+    this.visibilityAction,
   });
   final Icon? suffixIcon;
   final Color? fillColor;
@@ -21,10 +23,13 @@ class CustomTextFormField extends StatelessWidget {
   final Color? borderColor;
   final double? textFormFieldWidth;
   final double? borderRadius;
-
+  final bool? isObsecured;
+  final VoidCallback? visibilityAction;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: isObsecured ?? false,
+
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(vertical: 17.h, horizontal: 20.w),
         fillColor: fillColor ?? AppColors.lightWhite,
@@ -32,7 +37,12 @@ class CustomTextFormField extends StatelessWidget {
 
         hintText: hintText,
         hintStyle: hintStyle ?? AppTextStyles.font14LightGray500W,
-        suffixIcon: suffixIcon,
+        suffixIcon: suffixIcon == null
+            ? null
+            : GestureDetector(
+                onTap: visibilityAction ?? () {},
+                child: suffixIcon,
+              ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: borderColor ?? AppColors.lighterGray),
           borderRadius: BorderRadius.circular(borderRadius ?? 16.0.r),
