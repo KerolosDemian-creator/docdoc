@@ -13,6 +13,7 @@ class DocApp extends StatelessWidget {
     return ScreenUtilPlusInit(
       designSize: const Size(375, 812),
       splitScreenMode: true,
+
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
