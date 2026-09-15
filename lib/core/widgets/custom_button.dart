@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
     this.borderRadius,
     required this.buttonText,
     this.buttonTextStyle,
+    this.onTap,
   });
   final double? height;
   final double? width;
@@ -19,20 +20,24 @@ class CustomButton extends StatelessWidget {
   final double? borderRadius;
   final String buttonText;
   final TextStyle? buttonTextStyle;
+  final GestureTapCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width ?? double.infinity,
+    return GestureDetector(
+      onTap: onTap ?? () {},
+      child: Container(
+        width: width ?? double.infinity,
 
-      height: height ?? 50.h,
-      decoration: BoxDecoration(
-        color: buttonColor ?? AppColors.mainBlue,
-        borderRadius: BorderRadius.circular(borderRadius ?? 16.r),
-      ),
-      child: Center(
-        child: Text(
-          buttonText,
-          style: buttonTextStyle ?? AppTextStyles.font16White600W,
+        height: height ?? 50.h,
+        decoration: BoxDecoration(
+          color: buttonColor ?? AppColors.mainBlue,
+          borderRadius: BorderRadius.circular(borderRadius ?? 16.r),
+        ),
+        child: Center(
+          child: Text(
+            buttonText,
+            style: buttonTextStyle ?? AppTextStyles.font16White600W,
+          ),
         ),
       ),
     );
