@@ -1,12 +1,10 @@
 import 'package:docdoc/core/theme/app_colors.dart';
 import 'package:docdoc/core/theme/styles.dart';
-import 'package:docdoc/features/login/logic/login_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
+  const CustomTextFormField({  
     super.key,
     this.suffixIcon,
     this.fillColor,

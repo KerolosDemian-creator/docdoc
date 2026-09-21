@@ -2,7 +2,6 @@ import 'package:docdoc/features/login/data/model/login_request_body.dart';
 import 'package:docdoc/features/login/data/model/login_response.dart';
 import 'package:docdoc/features/login/data/repo/login_repo.dart';
 import 'package:flutter/widgets.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
