@@ -63,7 +63,6 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           verticalSpace(16),
           CustomTextFormField(
             controller: passwordController,
-
             isObsecured: isObsecure,
             hintText: 'Password',
             suffixIcon: isObsecure == false
