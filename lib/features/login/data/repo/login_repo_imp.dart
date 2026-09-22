@@ -17,7 +17,7 @@ class LoginRepoImp implements LoginRepo {
       final response = await _apiService.login(loginRequestBody);
       return right(response);
     } catch (e) {
-      return left(ErrorHandler.handle(e));
+      return left(ErrorHandler.handle(e.toString()));
     }
   }
 }
