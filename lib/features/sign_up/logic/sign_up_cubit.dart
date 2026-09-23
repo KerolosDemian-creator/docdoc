@@ -10,6 +10,8 @@ part 'sign_up_cubit.freezed.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   final SignUpRepo _signUpRepo;
+  Map<String, String> fieldErrors = {};
+
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -18,6 +20,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController passwordConfirmationController =
       TextEditingController();
   final formKey = GlobalKey<FormState>();
+
   SignUpCubit(this._signUpRepo) : super(SignUpState.initial());
 
   void emitSignUpState() async {
@@ -32,10 +35,14 @@ class SignUpCubit extends Cubit<SignUpState> {
         passwordConfirmation: passwordConfirmationController.text,
       ),
     );
-    response.fold(
-      (errMessage) =>
-          emit(SignUpState.failure(errMessage: errMessage.toString())),
-      (user) => emit(SignUpState.success(user)),
-    );
+    response.fold((errorHandler) {
+      fieldErrors = errorHandler.apiErrorModel.fieldErrors;
+      emit(
+        SignUpState.failure(
+          errMessage:
+              errorHandler.apiErrorModel.message ?? 'Something went wrong',
+        ),
+      );
+    }, (user) => emit(SignUpState.success(user)));
   }
 }

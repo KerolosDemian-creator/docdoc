@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({  
+  const CustomTextFormField({
     super.key,
     this.suffixIcon,
     this.fillColor,
@@ -21,6 +21,7 @@ class CustomTextFormField extends StatelessWidget {
     this.focusedBorder,
     this.errorBorder,
     this.focusedErrorBorder,
+    this.errorText, // <-- جديد
   });
   final Icon? suffixIcon;
   final Color? fillColor;
@@ -37,6 +38,7 @@ class CustomTextFormField extends StatelessWidget {
   final OutlineInputBorder? focusedBorder;
   final OutlineInputBorder? errorBorder;
   final OutlineInputBorder? focusedErrorBorder;
+  final String? errorText; // <-- جديد
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class CustomTextFormField extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(vertical: 17.h, horizontal: 20.w),
         fillColor: fillColor ?? AppColors.lightWhite,
         filled: true,
-
+        errorText: errorText, // <-- جديد
         hintText: hintText,
         hintStyle: hintStyle ?? AppTextStyles.font14LightGray500W,
         suffixIcon: suffixIcon == null
@@ -74,7 +76,6 @@ class CustomTextFormField extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(borderRadius ?? 16.0.r),
             ),
-
         errorBorder:
             errorBorder ??
             OutlineInputBorder(
