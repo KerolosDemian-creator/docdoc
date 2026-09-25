@@ -1,3 +1,4 @@
+import 'package:docdoc/core/helpers/app_regex.dart';
 import 'package:docdoc/core/helpers/spacing.dart';
 import 'package:docdoc/core/widgets/custom_button.dart';
 import 'package:docdoc/core/widgets/custom_text_form_field.dart';
@@ -48,7 +49,9 @@ class _SignUpTextFormFieldsState extends State<SignUpTextFormFields> {
             controller: context.read<SignUpCubit>().phoneController,
             hintText: 'Phone',
             validator: (value) {
-              if (value == null || value.isEmpty) {
+              if (value == null ||
+                  value.isEmpty ||
+                  !AppRegex.isPhoneNumberValid(value)) {
                 return 'Please enter a valid phone';
               }
             },
