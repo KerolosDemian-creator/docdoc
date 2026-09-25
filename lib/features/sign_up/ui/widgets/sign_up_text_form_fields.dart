@@ -85,7 +85,9 @@ class _SignUpTextFormFieldsState extends State<SignUpTextFormFields> {
             controller: context.read<SignUpCubit>().phoneController,
             hintText: 'Phone',
             validator: (value) {
-              if (value == null || value.isEmpty) {
+              if (value == null ||
+                  value.isEmpty ||
+                  !AppRegex.isPhoneNumberValid(value)) {
                 return 'Please enter a valid phone';
               }
 

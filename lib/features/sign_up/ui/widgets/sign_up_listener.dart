@@ -67,7 +67,7 @@ class SignUpListener extends StatelessWidget {
           },
         );
       },
-      child: Container(),
+      child: SizedBox.shrink(),
     );
   }
 
