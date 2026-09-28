@@ -1,4 +1,5 @@
 import 'package:docdoc/core/helpers/spacing.dart';
+import 'package:docdoc/core/theme/styles.dart';
 import 'package:docdoc/features/home/ui/widgets/doctor_container.dart';
 import 'package:docdoc/features/home/ui/widgets/home_screen_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,20 @@ class HomeScreenBody extends StatelessWidget {
           children: [
             HomeScreenAppBar(),
             verticalSpace(4.h),
-            DoctorContainer()
+            DoctorContainer(),
+            verticalSpace(24),
+
+            Row(
+              children: [
+                Text(
+                  'Doctor Speciality',
+                  style: AppTextStyles.font18DarkBlue600W,
+                ),
+                Spacer(),
+                Text('See All', style: AppTextStyles.font12MainBlue400W),
+              ],
+            ),
+            
           ],
         ),
       ),
