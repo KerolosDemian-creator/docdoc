@@ -8,7 +8,17 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.gray,
   );
-    static TextStyle font12LightGray400W = TextStyle(
+  static TextStyle font11DarkGray400W = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.darkGray,
+  );
+  static TextStyle font11MainBlue600W = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.mainBlue,
+  );
+  static TextStyle font12LightGray400W = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
     color: AppColors.lightGray,
@@ -20,16 +30,12 @@ class AppTextStyles {
     color: AppColors.darkBlue,
     wordSpacing: 1.8,
   );
-   static TextStyle font12MainBlue400W = TextStyle(
+  static TextStyle font12MainBlue400W = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
     color: AppColors.mainBlue,
   );
-  static TextStyle font11MainBlue600W = TextStyle(
-    fontSize: 11.sp,
-    fontWeight: FontWeight.w600,
-    color: AppColors.mainBlue,
-  );
+
   static TextStyle font14Gray400W = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
@@ -45,6 +51,11 @@ class AppTextStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: Colors.white,
+  );
+  static TextStyle font18DarkBlue700W = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.darkBlue,
   );
   static TextStyle font24Black700W = TextStyle(
     fontSize: 24.sp,
