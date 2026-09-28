@@ -1,3 +1,4 @@
+import 'package:docdoc/features/home/ui/widgets/home_screen_body.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,9 +6,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Home Screen')),
-      body: Center(child: Text('THIS IS HOME SCREEN !!!!')),
-    );
+    return const Scaffold(body: HomeScreenBody());
   }
 }
