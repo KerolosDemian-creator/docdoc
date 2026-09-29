@@ -4,6 +4,7 @@ import 'package:docdoc/features/home/ui/widgets/doctor_container.dart';
 import 'package:docdoc/features/home/ui/widgets/doctor_speciality_list_view.dart';
 import 'package:docdoc/features/home/ui/widgets/doctors_listview.dart';
 import 'package:docdoc/features/home/ui/widgets/home_screen_app_bar.dart';
+import 'package:docdoc/features/home/ui/widgets/see_all_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
@@ -22,20 +23,17 @@ class HomeScreenBody extends StatelessWidget {
             DoctorContainer(),
             verticalSpace(24),
 
-            //Doctor Speciality
-            Row(
-              children: [
-                Text(
-                  'Doctor Speciality',
-                  style: AppTextStyles.font18DarkBlue600W,
-                ),
-                Spacer(),
-                Text('See All', style: AppTextStyles.font12MainBlue400W),
-              ],
-            ),
+            // Doctor Speciality
+            SeeAllRow(seeAllRowTitle: 'Doctor Speciality'),
             verticalSpace(16),
 
             DoctorSpecialityListView(),
+            verticalSpace(25),
+            // Doctors
+            SeeAllRow(
+              seeAllRowTitle: 'Doctors',
+              seeAllRowTitleStyle: AppTextStyles.font18DarkBlue600W,
+            ),
             verticalSpace(12),
 
             DoctorsListview(),
