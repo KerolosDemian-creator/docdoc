@@ -13,6 +13,7 @@ class DocApp extends StatelessWidget {
     return ScreenUtilPlusInit(
       designSize: const Size(375, 812),
       splitScreenMode: true,
+
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -21,7 +22,7 @@ class DocApp extends StatelessWidget {
             primaryColor: AppColors.mainBlue,
             scaffoldBackgroundColor: Colors.white,
           ),
-          initialRoute: Routes.onboarding,
+          initialRoute: Routes.home,
           onGenerateRoute: appRouter.generateRoute,
         );
       },
