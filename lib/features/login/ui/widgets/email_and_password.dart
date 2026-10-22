@@ -1,103 +1,126 @@
 import 'package:docdoc/core/helpers/app_regex.dart';
 import 'package:docdoc/core/helpers/spacing.dart';
 import 'package:docdoc/core/widgets/custom_text_form_field.dart';
-import 'package:docdoc/features/login/logic/login_cubit.dart';
 import 'package:docdoc/features/login/ui/widgets/password_validations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EmailAndPassword extends StatefulWidget {
-  const EmailAndPassword({super.key});
+  const EmailAndPassword({
+    super.key,
+    required this.emailController,
+    required this.passwordController,
+    this.enabled = true,
+  });
+
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final bool enabled;
 
   @override
   State<EmailAndPassword> createState() => _EmailAndPasswordState();
 }
 
 class _EmailAndPasswordState extends State<EmailAndPassword> {
-  bool isObsecure = false;
-  late TextEditingController passwordController;
+  bool _obscurePassword = true;
 
-  bool hasLowerCase = false;
-  bool hasUpperCase = false;
-  bool hasSpecialCharacters = false;
-  bool hasNumbers = false;
-  bool hasMinLength = false;
+  bool _hasLowerCase = false;
+  bool _hasUpperCase = false;
+  bool _hasSpecialCharacters = false;
+  bool _hasNumbers = false;
+  bool _hasMinLength = false;
 
   @override
   void initState() {
-    passwordController = context.read<LoginCubit>().passwordEditingController;
-    setupControllerListener();
     super.initState();
+    widget.passwordController.addListener(_onPasswordChanged);
+    _onPasswordChanged();
   }
 
-  void setupControllerListener() {
-    passwordController.addListener(() {
-      setState(() {
-        hasLowerCase = AppRegex.hasLowerCase(passwordController.text);
-        hasUpperCase = AppRegex.hasUpperCase(passwordController.text);
-        hasSpecialCharacters = AppRegex.hasSpecialCharacters(
-          passwordController.text,
-        );
-        hasNumbers = AppRegex.hasNumbers(passwordController.text);
-        hasMinLength = AppRegex.hasMinLength(passwordController.text);
-      });
+  @override
+  void dispose() {
+    widget.passwordController.removeListener(_onPasswordChanged);
+    super.dispose();
+  }
+
+  void _onPasswordChanged() {
+    final password = widget.passwordController.text;
+    final hasLowerCase = AppRegex.hasLowerCase(password);
+    final hasUpperCase = AppRegex.hasUpperCase(password);
+    final hasSpecialCharacters = AppRegex.hasSpecialCharacters(password);
+    final hasNumbers = AppRegex.hasNumbers(password);
+    final hasMinLength = AppRegex.hasMinLength(password);
+
+    if (hasLowerCase == _hasLowerCase &&
+        hasUpperCase == _hasUpperCase &&
+        hasSpecialCharacters == _hasSpecialCharacters &&
+        hasNumbers == _hasNumbers &&
+        hasMinLength == _hasMinLength) {
+      return;
+    }
+
+    setState(() {
+      _hasLowerCase = hasLowerCase;
+      _hasUpperCase = hasUpperCase;
+      _hasSpecialCharacters = hasSpecialCharacters;
+      _hasNumbers = hasNumbers;
+      _hasMinLength = hasMinLength;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: context.read<LoginCubit>().formKey,
-
-      child: Column(
-        children: [
-          CustomTextFormField(
-            controller: context.read<LoginCubit>().emailEditingController,
-            hintText: 'Email',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid email';
-              }
-            },
+    return Column(
+      children: [
+        CustomTextFormField(
+          controller: widget.emailController,
+          hintText: 'Email',
+          enabled: widget.enabled,
+          keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.next,
+          autofillHints: const [AutofillHints.email],
+          validator: (value) {
+            final email = value?.trim() ?? '';
+            if (email.isEmpty) return 'Please enter your email';
+            if (!AppRegex.isEmailValid(email)) {
+              return 'Please enter a valid email';
+            }
+            return null;
+          },
+        ),
+        verticalSpace(16),
+        CustomTextFormField(
+          controller: widget.passwordController,
+          hintText: 'Password',
+          enabled: widget.enabled,
+          isObsecured: _obscurePassword,
+          keyboardType: TextInputType.visiblePassword,
+          textInputAction: TextInputAction.done,
+          autofillHints: const [AutofillHints.password],
+          suffixIcon: Icon(
+            _obscurePassword ? Icons.visibility_off : Icons.visibility,
           ),
-          verticalSpace(16),
-          CustomTextFormField(
-            controller: passwordController,
-            isObsecured: isObsecure,
-            hintText: 'Password',
-            suffixIcon: isObsecure == false
-                ? Icon(Icons.visibility_off)
-                : Icon(Icons.visibility),
-            visibilityAction: () {
-              setState(() {
-                isObsecure = !isObsecure;
-              });
-            },
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
-              }
-            },
+          visibilityAction: () {
+            setState(() => _obscurePassword = !_obscurePassword);
+          },
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter your password';
+            }
+            return null;
+          },
+        ),
+        verticalSpace(10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: PasswordValidations(
+            hasLowerCase: _hasLowerCase,
+            hasUpperCase: _hasUpperCase,
+            hasSpecialCharacters: _hasSpecialCharacters,
+            hasNumbers: _hasNumbers,
+            hasMinLength: _hasMinLength,
           ),
-          verticalSpace(8),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: PasswordValidations(
-              hasLowerCase: hasLowerCase,
-              hasUpperCase: hasUpperCase,
-              hasSpecialCharacters: hasSpecialCharacters,
-              hasNumbers: hasNumbers,
-              hasMinLength: hasMinLength,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }
