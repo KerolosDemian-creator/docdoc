@@ -15,19 +15,21 @@ class DocImgAndText extends StatelessWidget {
         Container(
           foregroundDecoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.white, Colors.white.withOpacity(0.0)],
+              colors: [
+                Colors.white,
+                Colors.white.withValues(alpha: 0.0),
+              ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
-              stops: [0.14, 0.4],
+              stops: const [0.14, 0.4],
             ),
           ),
           child: Image.asset(AppImages.onboardingDoctorImg),
         ),
-        // todo
         Positioned(
           bottom: -10.h,
-          right: 0.h,
-          left: 0.w,
+          right: 0,
+          left: 0,
           child: Text(
             'Best Doctor\nAppointment App',
             textAlign: TextAlign.center,
