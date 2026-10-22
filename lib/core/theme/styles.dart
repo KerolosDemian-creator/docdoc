@@ -3,24 +3,123 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
 class AppTextStyles {
-  static TextStyle font24Black700W = TextStyle(
-    fontSize: 24.sp,
-    fontWeight: FontWeight.w700,
-    color: Colors.black,
-  );
-  static TextStyle font32BlueBold = TextStyle(
-    fontSize: 32.sp,
-    fontWeight: FontWeight.bold,
-    color: AppColors.mainBlue,
-  );
-  static TextStyle font11Gray400W = TextStyle(
+  static TextStyle get font11Gray400W => TextStyle(
     fontSize: 11.sp,
     fontWeight: FontWeight.w400,
     color: AppColors.gray,
   );
-  static TextStyle font16White600W = TextStyle(
+  static TextStyle get font11DarkGray400W => TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.darkGray,
+  );
+  static TextStyle get font11MainBlue600W => TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.mainBlue,
+  );
+  static TextStyle get font12LightGray400W => TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.lightGray,
+    wordSpacing: 1.8,
+  );
+  static TextStyle get font12DarkGray400W => TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.darkGray,
+  );
+  static TextStyle get font12Gray500W => TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.gray,
+  );
+  static TextStyle get font12DarkBlue500W => TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.darkBlue,
+    wordSpacing: 1.8,
+  );
+  static TextStyle get font12MainBlue400W => TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.mainBlue,
+  );
+
+  static TextStyle get font14Gray400W => TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.gray,
+  );
+  static TextStyle get font14DarkGray400W => TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.darkGray,
+  );
+  static TextStyle get font14DarkBlue500W => TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.darkBlue,
+  );
+  static TextStyle get font14MainBlue500W => TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.mainBlue,
+  );
+  static TextStyle get font14LightGray500W => TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.lighterGray,
+  );
+  static TextStyle get font14White600W => TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static TextStyle get font16White600W => TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: Colors.white,
+  );
+  static TextStyle get font16DarkBlue600W => TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.darkBlue,
+  );
+  static TextStyle get font16DarkBlue700W => TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.darkBlue,
+  );
+  static TextStyle get font18White500W => TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+  static TextStyle get font18DarkBlue600W => TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.darkBlue,
+  );
+  static TextStyle get font18DarkBlue700W => TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.darkBlue,
+  );
+  static TextStyle get font24Black700W => TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.black,
+  );
+  static TextStyle get font24MainBlue700W => TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.mainBlue,
+  );
+  static TextStyle get font32BlueBold => TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColors.mainBlue,
   );
 }

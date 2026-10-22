@@ -1,3 +1,5 @@
+import 'package:docdoc/core/auth/auth_storage.dart';
+import 'package:docdoc/core/di/dependency_injection.dart';
 import 'package:docdoc/core/helpers/extensions.dart';
 import 'package:docdoc/core/routing/routes.dart';
 import 'package:docdoc/core/theme/app_colors.dart';
@@ -11,20 +13,23 @@ class GetStartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        context.pushNamed(Routes.login);
+      onPressed: () async {
+        await getIt<AuthStorage>().markOnboardingSeen();
+        if (!context.mounted) return;
+        context.pushReplacementNamed(Routes.login);
       },
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(AppColors.mainBlue),
-        minimumSize: MaterialStateProperty.all(const Size(double.infinity, 52)),
+        backgroundColor: const WidgetStatePropertyAll(AppColors.mainBlue),
+        minimumSize: WidgetStatePropertyAll(
+          Size(double.infinity, 52.h),
+        ),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        shape: MaterialStateProperty.all(
+        shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(16.r),
+            borderRadius: BorderRadius.circular(16.r),
           ),
         ),
       ),
-
       child: Text('Get Started', style: AppTextStyles.font16White600W),
     );
   }
