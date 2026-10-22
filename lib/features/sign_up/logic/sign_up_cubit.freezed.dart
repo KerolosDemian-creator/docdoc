@@ -128,7 +128,7 @@ return success(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String errMessage)?  failure,TResult Function( SignUpResponse user)?  success,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String errMessage)?  failure,TResult Function( LocalUser user)?  success,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Loading() when loading != null:
@@ -152,7 +152,7 @@ return success(_that.user);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String errMessage)  failure,required TResult Function( SignUpResponse user)  success,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String errMessage)  failure,required TResult Function( LocalUser user)  success,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case Loading():
@@ -175,7 +175,7 @@ return success(_that.user);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String errMessage)?  failure,TResult? Function( SignUpResponse user)?  success,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String errMessage)?  failure,TResult? Function( LocalUser user)?  success,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Loading() when loading != null:
@@ -326,7 +326,7 @@ class Success implements SignUpState {
   const Success(this.user);
   
 
- final  SignUpResponse user;
+ final  LocalUser user;
 
 /// Create a copy of SignUpState
 /// with the given fields replaced by the non-null parameter values.
@@ -358,7 +358,7 @@ abstract mixin class $SuccessCopyWith<$Res> implements $SignUpStateCopyWith<$Res
   factory $SuccessCopyWith(Success value, $Res Function(Success) _then) = _$SuccessCopyWithImpl;
 @useResult
 $Res call({
- SignUpResponse user
+ LocalUser user
 });
 
 
@@ -378,7 +378,7 @@ class _$SuccessCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? user = null,}) {
   return _then(Success(
 null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as SignUpResponse,
+as LocalUser,
   ));
 }
 
